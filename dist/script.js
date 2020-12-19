@@ -15463,6 +15463,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
 });
 
 /***/ }),
@@ -15538,31 +15539,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var tabs = function tabs(headerSelector, tabSelector, contentSelector, activeClass) {
   var header = document.querySelector(headerSelector),
-      teb = document.querySelectorAll(tabSelector),
+      tab = document.querySelectorAll(tabSelector),
       content = document.querySelectorAll(contentSelector);
 
   function hideTabContent() {
     content.forEach(function (item) {
       item.style.display = "none";
     });
-    tabSelector, forEach(function (item) {
-      item.style.classlist.remove(activeClass);
+    tab.forEach(function (item) {
+      item.classList.remove(activeClass);
     });
   }
 
   function showTabContent() {
     var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
     content[i].style.display = 'block';
-    item.style.classlist.add(activeClass);
+    tab[i].classList.add(activeClass);
   }
 
   hideTabContent();
   showTabContent();
-  header.addEventListener('clock', function (e) {
+  header.addEventListener('click', function (e) {
     var target = e.target;
 
-    if (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, ""))) {
-      tabSelector.forEach(function (item, i) {
+    if (target && target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, ""))) {
+      tab.forEach(function (item, i) {
         if (target == item || target.parentNode == item) {
           hideTabContent();
           showTabContent(i);
